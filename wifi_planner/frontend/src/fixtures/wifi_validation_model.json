@@ -1,0 +1,1257 @@
+{
+  "schema_version": "0.1.0",
+  "metadata": {
+    "source_image_ref": "fixtures/wifi_clean_office.png",
+    "scale_m_per_px": 0.02,
+    "scale_confidence": 0.82,
+    "scale_method": "reference_object",
+    "floor_dimensions_m": {
+      "width": 12,
+      "height": 8
+    },
+    "created_at": "2026-06-21T11:10:00Z",
+    "last_modified_at": "2026-06-21T11:10:00Z"
+  },
+  "walls": [
+    {
+      "id": "w_ext_n",
+      "start_m": [
+        0,
+        0
+      ],
+      "end_m": [
+        12,
+        0
+      ],
+      "thickness_m": 0.2,
+      "material": "concrete",
+      "attenuation_db": 12,
+      "confidence": 0.99,
+      "user_edited": false
+    },
+    {
+      "id": "w_ext_e",
+      "start_m": [
+        12,
+        0
+      ],
+      "end_m": [
+        12,
+        8
+      ],
+      "thickness_m": 0.2,
+      "material": "concrete",
+      "attenuation_db": 12,
+      "confidence": 0.99,
+      "user_edited": false
+    },
+    {
+      "id": "w_ext_s",
+      "start_m": [
+        12,
+        8
+      ],
+      "end_m": [
+        0,
+        8
+      ],
+      "thickness_m": 0.2,
+      "material": "concrete",
+      "attenuation_db": 12,
+      "confidence": 0.99,
+      "user_edited": false
+    },
+    {
+      "id": "w_ext_w",
+      "start_m": [
+        0,
+        8
+      ],
+      "end_m": [
+        0,
+        0
+      ],
+      "thickness_m": 0.2,
+      "material": "concrete",
+      "attenuation_db": 12,
+      "confidence": 0.99,
+      "user_edited": false
+    },
+    {
+      "id": "w_mid_v",
+      "start_m": [
+        6,
+        0
+      ],
+      "end_m": [
+        6,
+        8
+      ],
+      "thickness_m": 0.2,
+      "material": "drywall",
+      "attenuation_db": 4,
+      "confidence": 0.99,
+      "user_edited": false
+    },
+    {
+      "id": "w_mid_h",
+      "start_m": [
+        0,
+        4
+      ],
+      "end_m": [
+        12,
+        4
+      ],
+      "thickness_m": 0.2,
+      "material": "drywall",
+      "attenuation_db": 4,
+      "confidence": 0.99,
+      "user_edited": false
+    }
+  ],
+  "rooms": [
+    {
+      "id": "r_office_a",
+      "boundary_polygon_m": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "area_m2": 24,
+      "centroid_m": [
+        3.0,
+        2.0
+      ],
+      "label": "office",
+      "occupancy_level": "medium",
+      "adjacent_room_ids": [
+        "r_conference",
+        "r_corridor"
+      ],
+      "confidence": 0.98,
+      "user_edited": false
+    },
+    {
+      "id": "r_conference",
+      "boundary_polygon_m": [
+        [
+          6,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          12,
+          4
+        ],
+        [
+          6,
+          4
+        ]
+      ],
+      "area_m2": 24,
+      "centroid_m": [
+        9.0,
+        2.0
+      ],
+      "label": "conference",
+      "occupancy_level": "high",
+      "adjacent_room_ids": [
+        "r_office_a",
+        "r_corridor"
+      ],
+      "confidence": 0.98,
+      "user_edited": false
+    },
+    {
+      "id": "r_corridor",
+      "boundary_polygon_m": [
+        [
+          0,
+          4
+        ],
+        [
+          12,
+          4
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "area_m2": 48,
+      "centroid_m": [
+        6.0,
+        6.0
+      ],
+      "label": "corridor",
+      "occupancy_level": "medium",
+      "adjacent_room_ids": [
+        "r_office_a",
+        "r_conference"
+      ],
+      "confidence": 0.98,
+      "user_edited": false
+    }
+  ],
+  "doors": [
+    {
+      "id": "d_office_a",
+      "wall_id": "w_mid_h",
+      "position_m": [
+        3,
+        4
+      ],
+      "width_m": 0.9,
+      "material": "wood",
+      "attenuation_db": 4
+    },
+    {
+      "id": "d_conference",
+      "wall_id": "w_mid_h",
+      "position_m": [
+        8,
+        4
+      ],
+      "width_m": 0.9,
+      "material": "glass",
+      "attenuation_db": 3
+    }
+  ],
+  "windows": [
+    {
+      "id": "win_north_a",
+      "wall_id": "w_ext_n",
+      "position_m": [
+        3,
+        0
+      ],
+      "width_m": 1.8,
+      "attenuation_db": 3
+    },
+    {
+      "id": "win_north_b",
+      "wall_id": "w_ext_n",
+      "position_m": [
+        9,
+        0
+      ],
+      "width_m": 1.8,
+      "attenuation_db": 3
+    }
+  ],
+  "grid": {
+    "resolution_m": 1.0,
+    "origin_m": [
+      0,
+      0
+    ],
+    "cols": 12,
+    "rows": 8,
+    "floor_id": "floor_1",
+    "cells": [
+      {
+        "center_m": [
+          0.5,
+          0.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_office_a",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          1.5,
+          0.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_office_a",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          2.5,
+          0.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_office_a",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          3.5,
+          0.5
+        ],
+        "type": "window",
+        "attenuation_db": 3,
+        "room_id": "r_office_a",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          4.5,
+          0.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_office_a",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          5.5,
+          0.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_office_a",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          6.5,
+          0.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_conference",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          7.5,
+          0.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_conference",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          8.5,
+          0.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_conference",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          9.5,
+          0.5
+        ],
+        "type": "window",
+        "attenuation_db": 3,
+        "room_id": "r_conference",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          10.5,
+          0.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_conference",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          11.5,
+          0.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_conference",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          0.5,
+          1.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_office_a",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          1.5,
+          1.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_office_a",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          2.5,
+          1.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_office_a",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          3.5,
+          1.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_office_a",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          4.5,
+          1.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_office_a",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          5.5,
+          1.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_office_a",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          6.5,
+          1.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_conference",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          7.5,
+          1.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_conference",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          8.5,
+          1.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_conference",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          9.5,
+          1.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_conference",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          10.5,
+          1.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_conference",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          11.5,
+          1.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_conference",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          0.5,
+          2.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_office_a",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          1.5,
+          2.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_office_a",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          2.5,
+          2.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_office_a",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          3.5,
+          2.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_office_a",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          4.5,
+          2.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_office_a",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          5.5,
+          2.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_office_a",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          6.5,
+          2.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_conference",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          7.5,
+          2.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_conference",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          8.5,
+          2.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_conference",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          9.5,
+          2.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_conference",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          10.5,
+          2.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_conference",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          11.5,
+          2.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_conference",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          0.5,
+          3.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_office_a",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          1.5,
+          3.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_office_a",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          2.5,
+          3.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_office_a",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          3.5,
+          3.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_office_a",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          4.5,
+          3.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_office_a",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          5.5,
+          3.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_office_a",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          6.5,
+          3.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_conference",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          7.5,
+          3.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_conference",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          8.5,
+          3.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_conference",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          9.5,
+          3.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_conference",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          10.5,
+          3.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_conference",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          11.5,
+          3.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_conference",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          0.5,
+          4.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          1.5,
+          4.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          2.5,
+          4.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          3.5,
+          4.5
+        ],
+        "type": "door",
+        "attenuation_db": 4,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          4.5,
+          4.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          5.5,
+          4.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          6.5,
+          4.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          7.5,
+          4.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          8.5,
+          4.5
+        ],
+        "type": "door",
+        "attenuation_db": 4,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          9.5,
+          4.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          10.5,
+          4.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          11.5,
+          4.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          0.5,
+          5.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          1.5,
+          5.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          2.5,
+          5.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          3.5,
+          5.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          4.5,
+          5.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          5.5,
+          5.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          6.5,
+          5.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          7.5,
+          5.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          8.5,
+          5.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          9.5,
+          5.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          10.5,
+          5.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          11.5,
+          5.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          0.5,
+          6.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          1.5,
+          6.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          2.5,
+          6.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          3.5,
+          6.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          4.5,
+          6.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          5.5,
+          6.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          6.5,
+          6.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          7.5,
+          6.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          8.5,
+          6.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          9.5,
+          6.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          10.5,
+          6.5
+        ],
+        "type": "open",
+        "attenuation_db": 0,
+        "room_id": "r_corridor",
+        "placeable": true
+      },
+      {
+        "center_m": [
+          11.5,
+          6.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          0.5,
+          7.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          1.5,
+          7.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          2.5,
+          7.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          3.5,
+          7.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          4.5,
+          7.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          5.5,
+          7.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          6.5,
+          7.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          7.5,
+          7.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          8.5,
+          7.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          9.5,
+          7.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          10.5,
+          7.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      },
+      {
+        "center_m": [
+          11.5,
+          7.5
+        ],
+        "type": "wall",
+        "attenuation_db": 12,
+        "room_id": "r_corridor",
+        "placeable": false
+      }
+    ]
+  },
+  "access_points": [
+    {
+      "id": "ap_1",
+      "position_m": [
+        3.5,
+        5.5
+      ],
+      "tx_power_dbm": 18,
+      "freq_ghz": 5.0,
+      "source": "algorithm"
+    },
+    {
+      "id": "ap_2",
+      "position_m": [
+        8.5,
+        2.5
+      ],
+      "tx_power_dbm": 18,
+      "freq_ghz": 5.0,
+      "source": "algorithm"
+    }
+  ]
+}

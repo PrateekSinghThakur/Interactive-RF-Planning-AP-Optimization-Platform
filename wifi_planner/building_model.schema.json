@@ -1,0 +1,347 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arena.ai/schemas/building_model.schema.json",
+  "title": "Building Model",
+  "description": "Canonical v0.1 interchange artifact for floorplan understanding and spatial applications. All modules read and/or write this JSON shape only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "metadata",
+    "walls",
+    "rooms",
+    "doors",
+    "windows",
+    "grid",
+    "access_points"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1.0"
+    },
+    "metadata": { "$ref": "#/$defs/metadata" },
+    "walls": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/wall" }
+    },
+    "rooms": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/room" }
+    },
+    "doors": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/door" }
+    },
+    "windows": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/window" }
+    },
+    "grid": { "$ref": "#/$defs/grid" },
+    "access_points": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/access_point" }
+    },
+    "building_footprints": {
+      "description": "Optional detected/user-confirmed interior building footprint polygons. Grid builder uses these to create interior open-space cells; walls are obstacles, not the source of grid points.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/building_footprint" }
+    },
+    "analysis_regions": {
+      "description": "Optional generic user-selected regions for app-layer analysis/optimization. Example: Wi-Fi coverage ROI. Modules that do not use regions ignore this field.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/analysis_region" }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "coord_m": {
+      "type": "array",
+      "prefixItems": [
+        { "type": "number" },
+        { "type": "number" }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "polygon_m": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "$ref": "#/$defs/coord_m" }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "material": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "drywall",
+        "wood",
+        "glass",
+        "brick",
+        "concrete",
+        "reinforced_concrete",
+        "metal"
+      ]
+    },
+    "room_label": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "office",
+        "conference",
+        "corridor",
+        "lobby",
+        "kitchen",
+        "restroom",
+        "storage",
+        "utility",
+        "bedroom",
+        "living_room",
+        "classroom",
+        "lab",
+        "stairwell",
+        "exit",
+        "server_room",
+        "retail",
+        "work_area"
+      ]
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_image_ref",
+        "scale_m_per_px",
+        "scale_confidence",
+        "scale_method",
+        "floor_dimensions_m",
+        "created_at",
+        "last_modified_at"
+      ],
+      "properties": {
+        "source_image_ref": { "type": "string" },
+        "scale_m_per_px": { "type": "number", "exclusiveMinimum": 0 },
+        "scale_confidence": { "$ref": "#/$defs/confidence" },
+        "scale_method": {
+          "type": "string",
+          "enum": [
+            "ocr_text",
+            "scale_bar",
+            "dimension",
+            "reference_object",
+            "manual"
+          ]
+        },
+        "floor_dimensions_m": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["width", "height"],
+          "properties": {
+            "width": { "type": "number", "exclusiveMinimum": 0 },
+            "height": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        "created_at": { "type": "string", "format": "date-time" },
+        "last_modified_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "wall": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "start_m",
+        "end_m",
+        "thickness_m",
+        "material",
+        "attenuation_db",
+        "confidence",
+        "user_edited"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "start_m": { "$ref": "#/$defs/coord_m" },
+        "end_m": { "$ref": "#/$defs/coord_m" },
+        "thickness_m": { "type": "number", "exclusiveMinimum": 0 },
+        "material": { "$ref": "#/$defs/material" },
+        "attenuation_db": { "type": "number", "minimum": 0 },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "user_edited": { "type": "boolean" }
+      }
+    },
+    "room": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "boundary_polygon_m",
+        "area_m2",
+        "centroid_m",
+        "label",
+        "occupancy_level",
+        "adjacent_room_ids",
+        "confidence",
+        "user_edited"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "boundary_polygon_m": { "$ref": "#/$defs/polygon_m" },
+        "area_m2": { "type": "number", "minimum": 0 },
+        "centroid_m": { "$ref": "#/$defs/coord_m" },
+        "label": { "$ref": "#/$defs/room_label" },
+        "occupancy_level": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "adjacent_room_ids": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/id" },
+          "uniqueItems": true
+        },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "user_edited": { "type": "boolean" }
+      }
+    },
+    "door": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "wall_id",
+        "position_m",
+        "width_m",
+        "material",
+        "attenuation_db"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "wall_id": { "$ref": "#/$defs/id" },
+        "position_m": { "$ref": "#/$defs/coord_m" },
+        "width_m": { "type": "number", "exclusiveMinimum": 0 },
+        "material": { "$ref": "#/$defs/material" },
+        "attenuation_db": { "type": "number", "minimum": 0 }
+      }
+    },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "wall_id",
+        "position_m",
+        "width_m",
+        "attenuation_db"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "wall_id": { "$ref": "#/$defs/id" },
+        "position_m": { "$ref": "#/$defs/coord_m" },
+        "width_m": { "type": "number", "exclusiveMinimum": 0 },
+        "attenuation_db": { "type": "number", "minimum": 0 }
+      }
+    },
+    "grid": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resolution_m",
+        "origin_m",
+        "cols",
+        "rows",
+        "floor_id",
+        "cells"
+      ],
+      "properties": {
+        "resolution_m": { "type": "number", "exclusiveMinimum": 0 },
+        "origin_m": { "$ref": "#/$defs/coord_m" },
+        "cols": { "type": "integer", "minimum": 1 },
+        "rows": { "type": "integer", "minimum": 1 },
+        "floor_id": { "$ref": "#/$defs/id" },
+        "cells": {
+          "description": "Flattened row-major cells. Index = row * cols + col. center_m is the physical center coordinate of that cell.",
+          "type": "array",
+          "items": { "$ref": "#/$defs/grid_cell" }
+        }
+      }
+    },
+    "grid_cell": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "center_m",
+        "type",
+        "attenuation_db",
+        "room_id",
+        "placeable"
+      ],
+      "properties": {
+        "center_m": { "$ref": "#/$defs/coord_m" },
+        "type": {
+          "type": "string",
+          "enum": ["open", "wall", "door", "window", "outside"]
+        },
+        "attenuation_db": { "type": "number", "minimum": 0 },
+        "room_id": {
+          "anyOf": [
+            { "$ref": "#/$defs/id" },
+            { "type": "null" }
+          ]
+        },
+        "placeable": { "type": "boolean" }
+      }
+    },
+    "access_point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "position_m",
+        "tx_power_dbm",
+        "freq_ghz",
+        "source"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "position_m": { "$ref": "#/$defs/coord_m" },
+        "tx_power_dbm": { "type": "number" },
+        "freq_ghz": { "type": "number", "exclusiveMinimum": 0 },
+        "source": {
+          "type": "string",
+          "enum": ["algorithm", "manual"]
+        }
+      }
+    },
+    "building_footprint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "boundary_polygon_m", "confidence", "user_edited"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "boundary_polygon_m": { "$ref": "#/$defs/polygon_m" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "user_edited": { "type": "boolean" }
+      }
+    },
+    "analysis_region": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "boundary_polygon_m", "active", "user_edited"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "label": { "type": "string", "minLength": 1 },
+        "boundary_polygon_m": { "$ref": "#/$defs/polygon_m" },
+        "active": { "type": "boolean" },
+        "user_edited": { "type": "boolean" }
+      }
+    }
+  }
+}

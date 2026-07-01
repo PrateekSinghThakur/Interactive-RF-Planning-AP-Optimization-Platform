@@ -1,5 +1,7 @@
 # Interactive RF Planner for Enterprise Wi-Fi Deployment
 
+![Project Banner](docs/images/banner.png)
+
 > **🚧 Status: Under Active Development**
 
 An interactive RF planning platform for enterprise Wi-Fi deployment using **DXF floorplans**, **FastAPI**, **React**, the **Fast Marching Method (FMM)**, and **Particle Swarm Optimization (PSO)**.
